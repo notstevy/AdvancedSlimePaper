@@ -1,11 +1,9 @@
 --- a/paper-server/build.gradle.kts
 +++ b/paper-server/build.gradle.kts
-@@ -22,9 +_,20 @@
-     minecraftVersion = providers.gradleProperty("mcVersion")
-     gitFilePatches = false
- 
--    updatingMinecraft {
--        // oldPaperCommit = "7e80cef5198561d0db53406127e5b8bc7af51577"
+@@ -25,6 +_,15 @@
+     updatingMinecraft {
+         // oldPaperCommit = "711c5de2b05df39b72c44ff54e9f9381f8d153cb"
+     }
 +    val aspaper = forks.register("aspaper") {
 +        upstream.patchDir("paperServer") {
 +            upstreamPath = "paper-server"
@@ -13,13 +11,8 @@
 +            patchesDir = rootDirectory.dir("aspaper-server/paper-patches")
 +            outputDir = rootDirectory.dir("paper-server")
 +        }
-     }
-+
++    }
 +    activeFork = aspaper
-+
-+//    updatingMinecraft {
-+//        oldPaperCommit = "7e80cef5198561d0db53406127e5b8bc7af51577"
-+//    }
  }
  
  tasks.generateDevelopmentBundle {
